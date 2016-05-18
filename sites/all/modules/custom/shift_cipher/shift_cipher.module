@@ -1,0 +1,92 @@
+<?php
+
+function shift_cipher_menu() {
+    $items['shift_cipher'] = array(
+        'title' => "Shift Cipher",
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('shift_cipher_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['shift_cipher_result_page'] = array(
+        'title' => 'Result',
+        'page callback' => 'shift_cipher_result',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function shift_cipher_form() {
+    $form['shift_value'] = array(
+        '#title' => "Shift value",
+        '#type' => 'textfield',
+        '#description' => "Enter a number to determine how far you want to shift your phrase.",
+        '#element_validate' => array('element_validate_integer_positive'),
+        '#required' => TRUE,
+    );
+    $form['direction'] = array(
+        '#title' => "Direction",
+        '#type' => 'textfield',
+        '#description' => "Enter 'left' or 'right'.",
+        '#element_validate' => array('element_validate_direction'),
+        '#required' => TRUE,
+    );
+    $form['phrase'] = array(
+        '#title' => "Phrase",
+        '#type' => 'textfield',
+        '#description' => "Enter the phrase that you would like to encrypt.",
+        '#required' => TRUE,
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => "Encrypt",
+    );
+    return $form;
+}
+
+function element_validate_direction($element) {
+    $direction = strtolower($element['#value']);
+    if (($direction !== "right") && ($direction !==
+    "left")) {
+        form_set_error($direction, t('Please enter a valid direction.'));
+    }
+}
+
+function shift_cipher_form_submit($form, &$form_state) {
+    $shift_value = $form_state['values']['shift_value'];
+    $direction = $form_state['values']['direction'];
+    $phrase = $form_state['values']['phrase'];
+
+    $lower_case_phrase = strtolower($phrase);
+    $split_phrase = str_split($lower_case_phrase);
+
+    $alphabet = range('a', 'z');
+    $alpha_flip = array_flip($alphabet);
+
+    $cipher = "";
+
+    $punctuation = [' ', '\'', "\"", '.', ',', '/', '<', '>', '?', ';', ':', '{', '}', "|", '-', '_', '+', '=', ')', '(', '[', ']', '*', '&', '^', '%', '$', '#', '@', '!', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+
+    foreach($split_phrase as $letter) {
+        if(in_array($letter, $punctuation)) {
+            $cipher .= $letter;
+        } elseif ($direction === "left") {
+            $subtraction = $alpha_flip[$letter] - $shift_value;
+            $modulo = ($subtraction % 26) + ($subtraction < 0 ? 26 : 0);
+            if($modulo === 26) {
+                $modulo = 0;
+            }
+            $alpha_conversion = $alphabet[$modulo];
+            $cipher .= $alpha_conversion;
+        } else {
+            $cipher .= $alphabet[($alpha_flip[$letter] + $shift_value) % 26];
+        }
+    }
+    $_SESSION['result'] = $cipher;
+    $form_state['redirect'] = 'shift_cipher_result_page';
+}
+
+function shift_cipher_result() {
+    return (string) $_SESSION['result'];
+}

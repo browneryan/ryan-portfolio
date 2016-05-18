@@ -1,0 +1,24 @@
+/* FULL BREAKDOWN OF DIRECTION LEFT
+    example input = "hi",
+    example shift_value = "1"
+    example direction = "left"
+
+    $alphabet = array(a => 0, b => 1, etc)
+    $alpha_flip = array(0 => a, 1 => b, etc)
+
+    first $letter on foreach loop is "h"
+    what does $letter represent? the number or the letter? both?
+
+    $alpha_flip[0 =>'h'] somehow only matches alpha_flip array to the value of 'h' and not the key '0'?
+
+    $alpha_flip[0 =>'h'] === 'h' = 7 ?
+
+    7 - user input (1 for example) = 6
+    6/26 = 0.23, which in integer division means you round down to 0
+    a = q * b + r
+    6 = 0 * 26 + r
+    r = 6
+    6 is not less than 0, so return 0
+    alphabet[6] = 6 => g
+    return 'g'
+*/

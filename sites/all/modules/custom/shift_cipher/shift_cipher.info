@@ -1,0 +1,5 @@
+name = Shift Cipher
+description = Allows user to encrypt a message!
+package = Custom Modules
+core = 7.x
+files[] = shift_cipher.module
