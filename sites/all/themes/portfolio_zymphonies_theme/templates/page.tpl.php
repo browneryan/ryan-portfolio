@@ -79,7 +79,7 @@
       <nav id="main-menu" role="navigation">
         <a class="nav-toggle" href="#">Navigation</a>
         <div class="menu-navigation-container">
-          <?php $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); 
+          <?php $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
             print drupal_render($main_menu_tree);
           ?>
         </div>
@@ -91,7 +91,7 @@
   <header class="siteheader">
 
     <div class="zymphonies bounce">
-      
+
       <?php if ($logo): ?>
         <div id="logo">
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
@@ -106,7 +106,7 @@
       </h1>
 
     </div>
-  
+
   </header>
 
 <div class="front-blocks">
@@ -120,19 +120,19 @@
     </div>
 
     <div class="frontblockwrap">
-      <?php print render($page['myworks']); ?> 
+      <?php print render($page['myworks']); ?>
     </div>
 
     <div class="frontblockwrap zymphonies bounceInUp">
-      <?php print render($page['keyskills']); ?> 
+      <?php print render($page['keyskills']); ?>
     </div>
 
     <div class="frontblockwrap">
-      <?php print render($page['education']); ?> 
+      <?php print render($page['education']); ?>
     </div>
 
     <div class="frontblockwrap zymphonies bounceInDown">
-      <?php print render($page['awards']); ?> 
+      <?php print render($page['awards']); ?>
     </div>
 
   <?php endif; ?>
@@ -190,8 +190,8 @@
 
               </section>
 
-            </div> 
-        
+            </div>
+
           </div>
 
           <!-- Second Sidebar -->
@@ -216,10 +216,10 @@
 
     <div class="frontblockwrap zymphonies bounceInUp">
       <?php print render($page['resume']); ?>
-    </div> 
+    </div>
 
     <div class="frontblockwrap">
-      <?php print render($page['contact']); ?> 
+      <?php print render($page['contact']); ?>
     </div>
 
   <?php endif; ?>
@@ -229,11 +229,11 @@
   <!-- Footer -->
 
   <div id="footer">
-    
+
     <div class="footer_credit">
 
       <div class="social-media-wrap">
-      
+
         <?php if (theme_get_setting('social_links', 'portfolio_zymphonies_theme')): ?>
           <span class="social-icons">
            <ul>
@@ -242,22 +242,22 @@
             <li><a class="twitter" href="<?php echo theme_get_setting('twitter_profile_url', 'portfolio_zymphonies_theme'); ?>" target="_blank" rel="me"><i class="fa fa-twitter"></i></a></li>
             <li><a class="gplus" href="<?php echo theme_get_setting('gplus_profile_url', 'portfolio_zymphonies_theme'); ?>" target="_blank" rel="me"><i class="fa fa-google-plus"></i></a></li>
             <li><a class="linkedin" href="<?php echo theme_get_setting('linkedin_profile_url', 'portfolio_zymphonies_theme'); ?>" target="_blank" rel="me"><i class="fa fa-linkedin"></i></a></li>
-            <li><a class="pinterest" href="<?php echo theme_get_setting('pinterest_profile_url', 'portfolio_zymphonies_theme'); ?>" target="_blank" rel="me"><i class="fa fa-pinterest"></i></a></li>
+            <li><a class="pinterest" href="<?php echo theme_get_setting('pinterest_profile_url', 'portfolio_zymphonies_theme'); ?>" target="_blank" rel="me"><i class="fa fa-github"></i></a></li>
             <li><a class="youtube" href="<?php echo theme_get_setting('youtube_profile_url', 'portfolio_zymphonies_theme'); ?>" target="_blank" rel="me"><i class="fa fa-youtube"></i></a></li>
            </ul>
           </span>
         <?php endif; ?>
-        
+
       </div>
-        
+
       <div id="copyright">
 
         <div class="copyright">
-          <?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print $site_name; ?>
-        </div> 
+          <?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print t('Ryan Brown'); ?>
+        </div>
 
         <div class="credits">
-          <?php print t('Designed by'); ?>  <a href="http://www.zymphonies.com/">Zymphonies</a>
+
         </div>
 
       </div>
