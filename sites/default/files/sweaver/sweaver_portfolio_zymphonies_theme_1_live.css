@@ -1,12 +1,14 @@
 .page-wrap .siteheader {
-  background-image: url(/sites/default/files/sweaver/sweaver_image_14.jpg);
-  background-position: 50% 0%;
+  background-image: url(/sites/default/files/sweaver/sweaver_image_24.jpg);
+  background-position: 50% 50%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #8cb1c2;
 }
 
 .page-wrap .menu-wrap {
-  background-color: #c2bccc;
-  background-image: url(/sites/default/files/sweaver/sweaver_image_14.jpg);
+  background-color: #000000;
+  background-image: none;
   background-position: 50% 0%;
 }
 
